@@ -1,5 +1,7 @@
 import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,14 +49,36 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          BetterFeedback.of(context).show((UserFeedback feedback) {
-            /// Send feedback to your server
+        onPressed: () async {
+          BetterFeedback.of(context).show((UserFeedback feedback) async {
+            await _sendFeedbackToSentry(feedback);
           });
         },
         tooltip: 'Feedback',
         child: const Icon(Icons.feedback),
       ),
     );
+  }
+
+  Future<void> _sendFeedbackToSentry(UserFeedback feedback) async {
+    final feedbackContent = feedback.text ?? 'Empty feedback';
+    final id = await Sentry.captureMessage(
+      feedbackContent,
+      withScope: (scope) {
+        scope.addAttachment(
+          SentryAttachment.fromUint8List(
+            feedback.screenshot,
+            'screenshot.png',
+            contentType: 'image/png',
+          ),
+        );
+
+        scope.fingerprint = [const Uuid().v4()];
+      },
+    );
+    await Sentry.captureUserFeedback(SentryUserFeedback(
+      eventId: id,
+      comments: feedbackContent,
+    ));
   }
 }

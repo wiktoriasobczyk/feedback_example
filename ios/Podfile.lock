@@ -1,7 +1,11 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_udid (0.0.1):
+    - Flutter
+    - SAMKeychain
   - package_info_plus (0.4.5):
     - Flutter
+  - SAMKeychain (1.5.3)
   - Sentry/HybridSDK (8.25.2)
   - sentry_flutter (8.2.0):
     - Flutter
@@ -10,16 +14,20 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_udid (from `.symlinks/plugins/flutter_udid/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
 
 SPEC REPOS:
   trunk:
+    - SAMKeychain
     - Sentry
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_udid:
+    :path: ".symlinks/plugins/flutter_udid/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   sentry_flutter:
@@ -27,7 +35,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_udid: a2482c67a61b9c806ef59dd82ed8d007f1b7ac04
   package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   Sentry: 51b056d96914a741f63eca774d118678b1eb05a1
   sentry_flutter: e8397d13e297a5d4b6be8a752e33140b21c5cc97
 
