@@ -112,14 +112,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_udid:
-    dependency: "direct main"
-    description:
-      name: flutter_udid
-      sha256: "63384bd96203aaefccfd7137fab642edda18afede12b0e9e1a2c96fe2589fd07"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -323,7 +315,7 @@ packages:
     source: hosted
     version: "1.3.2"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       sha256: "814e9e88f21a176ae1359149021870e87f7cddaf633ab678a5d2b0bff7fd1ba8"
